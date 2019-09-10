@@ -1,12 +1,9 @@
 package com.monibox.automation;
 
-import static com.monibox.automation.utils.ConfigPropertyReader.getProperty;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +16,6 @@ import org.testng.Reporter;
 
 import com.google.common.io.Files;
 import com.monibox.automation.seleniumCoreUtils.PageLibrary;
-import com.monibox.automation.utils.PDFHandler;
 
 
 public class webDriverCreator {
@@ -38,7 +34,7 @@ public class webDriverCreator {
 	 */
 	
 	public PageLibrary page;
-	public PDFHandler pdf;
+	
 	
 	
 
@@ -71,7 +67,7 @@ public class webDriverCreator {
 	private void _initPage() {
 		
 		page = new PageLibrary(driver);
-		pdf = new PDFHandler();
+	
 	}
 	
 	
