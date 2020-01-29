@@ -1,6 +1,7 @@
+.classpath
+.DS_Store
+.settings/
 .project
 /TestReport/
 /test-output/
-.classpath
-.settings
 /target/
