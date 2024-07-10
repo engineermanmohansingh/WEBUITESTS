@@ -31,6 +31,16 @@ jobs:
     - run: chrome --version
     - name: Build tests with Maven
       run: mvn -B package --file pom.xml test -Dtest=EcommerceScenarioTest
+    - name: HTML Preview
+      id: html_preview
+      uses: pavi2410/html-preview-action@v2
+      with:
+        html_file: 'TestReport/Extent-Test-Report.html'
+    - uses: actions/upload-artifact@v4
+      with:
+        name: TestReport
+        path: TestReport/Extent-Test-Report.html
+
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
