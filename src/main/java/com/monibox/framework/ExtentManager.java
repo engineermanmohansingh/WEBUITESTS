@@ -16,10 +16,8 @@ public class ExtentManager {
 	private static ExtentReports extent;
 	private static Platform platform;
 	private static String reportFileName = "Extent-Test-Report.html";
-	private static String macPath = System.getProperty("user.dir") +File.separator + "TestReport";
-	private static String windowsPath = System.getProperty("user.dir") + "\\TestReport";
-	private static String macReportFileLoc = macPath + "/" + reportFileName;
-	private static String winReportFileLoc = windowsPath + "\\" + reportFileName;
+	private static String path = System.getProperty("user.dir") +File.separator + "TestReport";
+	private static String FileLoc = path + File.separator + reportFileName;
 
 	public static ExtentReports getInstance() {
 		if (extent == null) {
@@ -29,7 +27,7 @@ public class ExtentManager {
 	}
 
 	public static ExtentReports createInstance() {
-		String fileName = getReportFileLocation(getCurrentPlatform());
+		String fileName = getReportFileLocation();
 		ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(fileName);
 		htmlReporter.config().setTheme(Theme.DARK);
 		htmlReporter.config().setDocumentTitle(fileName);
@@ -48,43 +46,14 @@ public class ExtentManager {
 	 * Custom code for determining file path location based on OS/environment
 	 **************************************************************************/
 
-	private static String getReportFileLocation(Platform platform) {
-		String reportFileLocation = null;
-		switch (platform) {
-		case MAC:
-			reportFileLocation = macReportFileLoc;
-			createReportPath(macPath);
-			System.out.println("ExtentReport Path for MAC: " + macPath + "\n");
-			break;
-		case WINDOWS:
-			reportFileLocation = winReportFileLoc;
-			createReportPath(windowsPath);
-			System.out.println("ExtentReport Path for WINDOWS: " + windowsPath + "\n");
-			break;
-		case LINUX:
-			System.out.println("ExtentReport Path for Linux: \n");
-			break;
-		default:
-			System.out.println("ExtentReport path has not been set! There is a problem!\n");
-			break;	
-		}
+	private static String getReportFileLocation() {
+		String reportFileLocation = FileLoc;
+		createReportPath(path);
+		System.out.println(FileLoc);
 		return reportFileLocation;
 	}
 
-	// Get current platform
-	private static Platform getCurrentPlatform() {
-		if (platform == null) {
-			String operSys = System.getProperty("os.name").toLowerCase();
-			if (operSys.contains("win")) {
-				platform = Platform.WINDOWS;
-			} else if (operSys.contains("nix") || operSys.contains("nux") || operSys.contains("aix")) {
-				platform = Platform.LINUX;
-			} else if (operSys.contains("mac")) {
-				platform = Platform.MAC;
-			}
-		}
-		return platform;
-	}
+
 	
 	//Create the report path if it does not exist
     private static void createReportPath (String path) {
