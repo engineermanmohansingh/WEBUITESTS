@@ -113,6 +113,7 @@ public class browserFactory {
 
 		options.addArguments("--disable-extensions");
 		options.addArguments("test-type");
+		options.addArguments("--headless");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.setExperimentalOption("prefs", prefs);
