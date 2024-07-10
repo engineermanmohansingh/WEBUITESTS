@@ -1,6 +1,7 @@
 package com.monibox.seleniumCoreUtils;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -685,8 +686,8 @@ public class PageLibrary extends seleniumCore {
 	   public void waitForObject( final By locator, int seconds)  {
 			
 			FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-					.withTimeout(seconds, TimeUnit.SECONDS)
-					.pollingEvery(2, TimeUnit.SECONDS)
+					.withTimeout(Duration.ofSeconds(seconds))
+					.pollingEvery(Duration.ofSeconds(2))
 					.ignoring(NoSuchElementException.class);
 			System.out.println("Waiting for element");
 			

@@ -106,7 +106,7 @@ public class browserFactory {
 	}
 
 	private static WebDriver getChromeDriver(String driverpath) {
-		System.setProperty("webdriver.chrome.driver", driverpath);
+//		System.setProperty("webdriver.chrome.driver", driverpath);
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("download.default_directory", System.getProperty("user.dir") + File.separator + "target");
 		ChromeOptions options = new ChromeOptions();
@@ -123,7 +123,7 @@ public class browserFactory {
 		System.setProperty("webdriver.ie.driver", driverpath);
 		InternetExplorerOptions options = new InternetExplorerOptions();
 		options.setCapability("ignoreZoomSetting", true);
-		options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
 		options.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 		// ---> Add this capability only if your execution is backed down due to network
 		// policies

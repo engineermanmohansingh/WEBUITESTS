@@ -1,5 +1,6 @@
 package com.monibox.seleniumCoreUtils;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +23,7 @@ public class SeleniumWait{
     
     public SeleniumWait(WebDriver driver, int timeout) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, timeout);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         this.timeout = timeout;
         PageFactory.initElements(driver, this);
     }
@@ -198,7 +199,7 @@ public class SeleniumWait{
     
     public void resetExplicitTimeout(int newTimeOut) {
         try {
-            this.wait = new WebDriverWait(driver,newTimeOut);
+            this.wait = new WebDriverWait(driver,Duration.ofSeconds(newTimeOut));
         } catch (Exception e) {	
         }
     }

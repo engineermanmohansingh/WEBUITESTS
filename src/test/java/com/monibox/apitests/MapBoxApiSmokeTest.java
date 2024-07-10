@@ -11,10 +11,10 @@ import io.restassured.http.ContentType;
 public class MapBoxApiSmokeTest extends PreAndPostRestCalls {
 	PropFileHandler propFile;
 	JSONObject formData;
-	public void init() {
-		 propFile = new PropFileHandler("apiRequestData");
-		 formData = new JSONObject();
-	}
+//	public void init() {
+//		 propFile = new PropFileHandler("apiRequestData");
+//		 formData = new JSONObject();
+//	}
 	
 	@Test(description="I should be able to create a user data set at mapbox")
 	public void TC01_createDataSet() {
